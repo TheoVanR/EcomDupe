@@ -3,21 +3,23 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --text-neutral: #0b1130;
+  --bg-neutral: #0b1130;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  @apply font-sans bg-white text-neutral;
+  color: var(--text-neutral);
+}
+
+.text-neutral {
+  color: var(--text-neutral);
+}
+
+
+h1 {
+  font-family: garamond;
+  font-size: 2.25rem;
 }
 
 @layer utilities {

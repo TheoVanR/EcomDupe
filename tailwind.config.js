@@ -11,6 +11,16 @@ module.exports = {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      animation: {
+        'bounce-in': 'bounceIn 1s ease-out forwards', // Custom bounce-in animation
+      },
+      keyframes: {
+        bounceIn: {
+          '0%': { transform: 'translateX(100%)', opacity: '1' },  // Start off-screen to the right
+
+          '100%': { transform: 'translateX(0)', opacity: '1' },  // End at normal position
+        },
+      },
     },
   },
   plugins: [],
