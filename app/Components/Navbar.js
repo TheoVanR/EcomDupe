@@ -4,9 +4,8 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Cart from './Cart';
 import Validate from './Validate';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-import { faCoffee } from '@fortawesome/fontawesome-free'
+
 
 const Navbar = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -17,7 +16,6 @@ const Navbar = () => {
 
     return (
         <header>
-
             <div className=" z-30 absolute top-10 m-[10] left-20  w-20   decoration-none text-neutral">
                 <Link className="text-neutral text-4xl" href="/Landing">Eton</Link>
             </div>
@@ -31,7 +29,6 @@ const Navbar = () => {
                             <li>
                                 <a href="#" className="text-neutral">Journal</a>
                             </li>
-
                             <Validate />
                             <Cart />
                         </ul>

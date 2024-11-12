@@ -2,6 +2,9 @@
 import React, { useState } from 'react';
 import { useCart } from '../CartContext';
 import Link from 'next/link';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+import { faBagShopping, } from '@fortawesome/free-solid-svg-icons'
 
 const Cart = () => {
     const { cartItems, addItem, removeItem } = useCart(); // Access cartItems and functions from CartContext
@@ -19,8 +22,10 @@ const Cart = () => {
         <>
             {/* Button to open the cart modal */}
             <button onClick={toggleModal}>
-                Open cart
+                <FontAwesomeIcon icon={faBagShopping} />
+
             </button>
+
 
             {/* Modal */}
             {isModalOpen && (

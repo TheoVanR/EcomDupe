@@ -1,5 +1,5 @@
 "use client";
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext, useEffect } from 'react';
 
 // Create the context
 const CustomerContext = createContext();
@@ -25,24 +25,29 @@ const CustomerProvider = ({ children }) => {
     };
 
     const logIn = (userDetails) => {
-        setCustomer({
-            ...customer,
+        setCustomer((prevCustomer) => ({
+            ...prevCustomer,
             ...userDetails,
             isLoggedIn: true,
-        });
+        }));
     };
 
     const logOut = () => {
         setCustomer({
             email: '',
             name: '',
-            lastName: '',
+            lastname: '',
             password: '',
             address: '',
             postalNumber: '',
             isLoggedIn: false,
         });
     };
+
+    // Debugging: Log customer state whenever it updates
+    useEffect(() => {
+        console.log("Customer state updated:", customer);
+    }, [customer]);
 
     return (
         <CustomerContext.Provider value={{ customer, createUser, logOut, logIn }}>
