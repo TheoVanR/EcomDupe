@@ -1,14 +1,23 @@
 "use client";
 import React, { useState } from 'react';
 import { useCustomer } from '../CustomerContext';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import CustomerInfo from './CustomerInfo';
 
 const Validate = () => {
     const { logIn, logOut, customer } = useCustomer();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isModalOpen, setIsModalOpen] = useState(false);
+
+    function setCookie(CustomerInfo, value, exdays) {
+        const date = new Date();
+        date.setTime(date.getTime() + (exdays * 24 * 60 * 60 * 1000));
+        let expires = "expires=" + date.toUTCString();
+        document.cookie = `${CustomerInfo}=${value}; ${expires}; path=/;`;
+
+    }
 
     const toggleModal = () => {
         setIsModalOpen(!isModalOpen);
@@ -17,6 +26,7 @@ const Validate = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         logIn({ email, password });
+
     };
 
     return (
@@ -27,12 +37,11 @@ const Validate = () => {
 
                     {isModalOpen && (
                         <div
-                            className="fixed py-12 px-6 top-0 right-0 transform -translate-y-1/2 w-1/3 h-full bg-white z-50 flex items-start justify-left opacity-100 animate-bounce-in"
+                            className="fixed py-12 px-6 shadow top-0 right-0 transform -translate-y-1/2 w-1/3 h-full bg-white z-50 flex items-start justify-left opacity-100 animate-bounce-in"
                             aria-modal="true"
                             role="dialog"
                         >
-                            <button onClick={toggleModal}><FontAwesomeIcon icon={faUser} /></button>
-                            <p>Welcome {customer.email}</p>
+                            <CustomerInfo />
                             <button onClick={logOut}>Log Out</button>
                             <button
                                 onClick={toggleModal}

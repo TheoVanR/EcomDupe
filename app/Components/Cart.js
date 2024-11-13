@@ -30,7 +30,7 @@ const Cart = () => {
             {/* Modal */}
             {isModalOpen && (
                 <div
-                    className="fixed py-12 top-0 border-2 px-6 right-0 transform -translate-y-1/2 w-1/3 h-full bg-white z-50 flex items-start opacity-10 justify-left  animate-bounce-in"
+                    className="fixed py-12 top-0 border-2 shadow px-6 right-0 transform -translate-y-1/2 w-1/3 h-full bg-white z-50 flex items-start opacity-10 justify-left  animate-bounce-in"
                     aria-modal="true"
                     role="dialog"
                 >

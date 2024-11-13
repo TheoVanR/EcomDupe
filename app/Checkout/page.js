@@ -3,9 +3,12 @@
 import React, { useContext } from 'react';
 import { useCart } from '../CartContext';
 import Cart from '../Components/Cart';
-
+import { useState } from 'react';
+import CustomerInfo from '../Components/CustomerInfo';
 const CheckoutPage = () => {
     const { cartItems, totalPrice, clearCart } = useCart();
+    const [email, setEmail] = useState('');
+
 
     const handleCheckout = () => {
         // Implement checkout logic here
@@ -24,6 +27,10 @@ const CheckoutPage = () => {
                 ))}
             </ul>
             <h2>Total: ${totalPrice}</h2>
+
+            <h1>Check detalis</h1>
+            <CustomerInfo />
+
             <button className="text-natural text-xs m-2 bg-blue-950 text-white px-6 py-2 rounded-full right-6"
                 onClick={handleCheckout}>
                 Delivery</button>

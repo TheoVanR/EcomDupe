@@ -1,6 +1,6 @@
 
 import localFont from "next/font/local";
-import Navbar from "./Components/Navbar";
+import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 import "./globals.css";
 import { CartProvider } from "./CartContext";
@@ -26,7 +26,7 @@ export default function RootLayout({ children }) {
         <CartProvider>
           <CustomerProvider>
 
-            <Navbar />
+            <Header />
             {children}
             <Footer />
           </CustomerProvider>
