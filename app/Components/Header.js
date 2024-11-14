@@ -18,22 +18,27 @@ const Header = () => {
     return (
         <header className="fixed top-8 left-0 w-full z-50  ">
             <div className="flex items-center justify-between px-10 py-4">
-                <Link href="/" className="text-white text-4xl">Eton</Link>
+                <Link id="logotxt" href="/" className="text-white">Eton</Link>
 
-                <nav className="flex px-[8rem] py-4 rounded-full text-slate-950 bg-gray-100 space-x-8">
-                    <a onClick={toggleModal} className="cursor-pointer ">Shop</a>
-                    <Validate />
-                    <button>
+                <nav className="flex w-2/5 items-center py-4 rounded-full text-slate-950 bg-gray-100 justify-between">
+                    <a onClick={toggleModal} className="cursor-pointer flex-1 text-center">Shop</a>
+                    <div className="flex-1 flex justify-center">
+                        <Validate />
+                    </div>
+                    <button className=" text-center">
                         <FontAwesomeIcon icon={faHeart} />
                     </button>
-                    <Cart />
+                    <div className="flex-1 flex justify-center">
+                        <Cart />
+                    </div>
                 </nav>
+
             </div>
 
             {/* Modal */}
             {isModalOpen && (
                 <div
-                    className="fixed py-12 px-6 top-0 right-0 transform -translate-y-1/2 w-1/3 h-full bg-white z-51 flex items-start opacity-100 animate-bounce-in"
+                    className="fixed py-12 px-6 top-0 right-0 transform shadow -translate-y-1/2 w-2/5 h-full bg-white z-51 flex items-start opacity-100 animate-bounce-in"
                     aria-modal="true"
                     role="dialog"
                 >

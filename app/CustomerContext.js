@@ -12,7 +12,8 @@ const CustomerProvider = ({ children }) => {
         lastname: '',
         password: '',
         address: '',
-        postalNumber: '',
+        city: '',
+        postalCode: '',
         isLoggedIn: false,
     });
 
@@ -33,20 +34,47 @@ const CustomerProvider = ({ children }) => {
         }
     }, [customer]);
 
+    const validateUserDetails = (userDetails) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const passwordRegex = /^(?=.*\d)(?=.*[A-Z]).{7,}$/;
+
+        const isEmailValid = emailRegex.test(userDetails.email);
+        const isPasswordValid = passwordRegex.test(userDetails.password);
+
+        return isEmailValid && isPasswordValid;
+    };
+
     const createUser = (userDetails) => {
-        setCustomer({
-            ...customer,
-            ...userDetails,
-            isLoggedIn: true,
-        });
+        if (!validateUserDetails(userDetails)) {
+            alert('Invalid email or password');
+            return;
+        }
+        else {
+            alert('User created successfully');
+            setCustomer({
+                ...customer,
+                ...userDetails,
+                isLoggedIn: true,
+            });
+        }
+
     };
 
     const logIn = (userDetails) => {
-        setCustomer((prevCustomer) => ({
-            ...prevCustomer,
-            ...userDetails,
-            isLoggedIn: true,
-        }));
+        if (!validateUserDetails(userDetails)) {
+            alert('Invalid email or password');
+            return;
+        } else {
+            alert('Logged in successfully');
+            setCustomer((prevCustomer) => ({
+                ...prevCustomer,
+                ...userDetails,
+                isLoggedIn: true,
+            }));
+        }
+
+
+
     };
 
     const logOut = () => {
@@ -56,7 +84,8 @@ const CustomerProvider = ({ children }) => {
             lastname: '',
             password: '',
             address: '',
-            postalNumber: '',
+            city: '',
+            postalCode: '',
             isLoggedIn: false,
         });
         Cookies.remove('customer');

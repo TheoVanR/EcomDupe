@@ -21,6 +21,20 @@ h1 {
   font-family: garamond;
   font-size: 2.25rem;
 }
+#logotxt {
+  font-family: garamond;
+  font-size: 3rem;
+}
+
+h2 {
+  font-family: garamond;
+  font-size: 1.875rem;
+}
+p {
+  font-family:  Helvetica, sans-serif;
+  color: var(--text-neutral);
+  
+}
 
 @layer utilities {
   .text-balance {

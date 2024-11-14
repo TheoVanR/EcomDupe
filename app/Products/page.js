@@ -37,8 +37,7 @@ export default function Page({ product }) {
                             <div className="text-left mt-4">
                                 <Link href="./Products/ProductInfo">{product.title}</Link>
                                 <p>{product.Category}</p>
-                                <p>{product.price.toFixed(2)}</p>
-                                <button onClick={() => addToCart(product)}>Add to cart</button>
+                                <p>Price: {product.price.toFixed(2)}</p>
                             </div>
                         </div>
 

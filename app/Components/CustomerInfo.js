@@ -10,10 +10,11 @@ const CustomerInfo = () => {
         <div className="customer-info">
             {customer.isLoggedIn ? (
                 <div>
-                    <h2>Welcome, {customer.name} {customer.lastname}!</h2>
+                    <p>Name: {customer.name} {customer.lastname}</p>
                     <p>Email: {customer.email}</p>
                     <p>Address: {customer.address}</p>
-                    <p>Postal Number: {customer.postalNumber}</p>
+                    <p>City: {customer.city}</p>
+                    <p>Postal Code: {customer.postalCode}</p>
                 </div>
             ) : (
                 <p>Please log in to see your account information.</p>
