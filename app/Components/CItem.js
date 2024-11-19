@@ -4,7 +4,7 @@ const { cartItems } = useCart(); // Access cartItems and functions from CartCont
 
 
 
-const CItem = (cartItem) => {
+const CItem = (index) => {
     <div className='bg-gray-100'>
         <img src={item.image} alt={item.title} className="w-6 h-6 object-cover rounded-lg" />
         <div>
