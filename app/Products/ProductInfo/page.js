@@ -1,7 +1,5 @@
 import Image from 'next/image';
-import Container from 'postcss/lib/container';
-import shirt1 from '/public/shirt1.webp';
-import shirt2 from '/public/shirt2.webp';
+
 import ProductCard from '/app/Components/Productcard';
 
 export default function ProductInfo() {

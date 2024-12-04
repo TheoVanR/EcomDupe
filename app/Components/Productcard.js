@@ -1,7 +1,5 @@
 "use client";
 import React, { useState, useEffect } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLeaf, faIndustry, faCloud } from '@fortawesome/free-solid-svg-icons';
 import { useCart } from '../CartContext';
 
 const ProductCard = () => {
@@ -34,15 +32,7 @@ const ProductCard = () => {
                 <p className="product-desc">{product.description}</p>
 
             </div>
-            <span>
-                <FontAwesomeIcon icon={faLeaf} />
-            </span>
-            <span>
-                <FontAwesomeIcon icon={faIndustry} />
-            </span>
-            <span>
-                <FontAwesomeIcon icon={faCloud} />
-            </span>
+         
 
             <button onClick={() => addToCart(product)} type="button" class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Add to cart</button>
         </div>

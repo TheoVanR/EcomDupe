@@ -15,8 +15,10 @@
     "@fortawesome/free-regular-svg-icons": "^6.6.0",
     "@fortawesome/free-solid-svg-icons": "^6.6.0",
     "@fortawesome/react-fontawesome": "^0.2.2",
+    "http-proxy-middleware": "^3.0.3",
     "js-cookie": "^3.0.5",
     "next": "14.2.15",
+    "nextjs-cors": "^2.2.0",
     "react": "^18",
     "react-dom": "^18"
   },

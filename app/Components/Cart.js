@@ -4,6 +4,8 @@ import { useCart } from '../CartContext';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBagShopping, } from '@fortawesome/free-solid-svg-icons'
+import CItem from './CItem';
+import Image from 'next/image';
 
 const Cart = () => {
     const { cartItems, removeItem } = useCart(); // Access cartItems and functions from CartContext
@@ -37,6 +39,7 @@ const Cart = () => {
                             <h1 className="text-4xl  no-underline ">
                                 Cart
                             </h1>
+                          
                         </div>
 
                         {/* If the cart is empty */}
@@ -46,7 +49,7 @@ const Cart = () => {
                                 <div className='p-4 h-[12rem]'>
                                     <h2 >Your cart is empty.</h2>
 
-
+                                   
                                 </div>
                                 <div className="bg-gray-100 py-2 flex mt-[8rem] justify-center items-center ">
                                     <p>Free delivery and returns within 60 days</p>
@@ -65,7 +68,6 @@ const Cart = () => {
 
                                     </div>
                                 </div>
-
                             </>
 
 
@@ -80,11 +82,20 @@ const Cart = () => {
                                     <ul>
                                         {cartItems.map((item, index) => (
                                             <li className="p-4" key={index}>
-                                                {item.title} ${item.price.toFixed(2)}
-                                                <button className="p-2" onClick={() => removeItem(index)}>Remove</button>
+                                                <div className='flex '>
+                                                         <Image src="/shirt2.webp" alt="shirt2" width={70} height={60} />
+                                                         <div className='mx-2 justify-center'>
+                                                            <p>{item.title}</p> 
+                                                             <p> ${item.price.toFixed(2)}</p>
+                                                            <button className="py-2 w-[4rem] bg-gray-100 rounded-full" onClick={() => removeItem(index)}>X</button>
+
+                                                         </div>
+                                                
+                                                </div>
+                                               
+                                                
                                             </li>
                                         ))}
-                                        {/* Checkout button */}
 
 
                                     </ul>
