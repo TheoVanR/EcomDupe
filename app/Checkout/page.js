@@ -9,32 +9,28 @@ const CheckoutPage = () => {
 
     const msg = {
         "Order": {
-            "Id": "12345",
-            "dateOfOrder": "2024-11-20"
+            "Id": 0,
+            "dateOfOrder": "2024-06-08"
         },
         "Product": {
-            "Id": "67890",
-            "name": "Example Product",
-            "description": "This is a sample product description.",
-            "quantity": 2
+            "Id": 2,
+            "title": "Navy shirt",
+            "Price": 1599,
+            "Category": "Shirt"
         },
-        "Id": 1,
-        "title": "Sample Order",
-        "Price": 99.99,
-        "Category": "Electronics",
         "Customer": {
-            "Id": 1,
-            "name": "John Doe",
-            "Email": "john.doe@example.com",
-            "adress": "123 Main St",
-            "postalCode": 12345,
-            "City": "Sample City"
+            "Id": 2,
+            
+            "Email": "jane.doe@example.com",
+            "adress": "456 Oak St",
+            "postalCode": 67890,
+            "City": "Shelbyville"
         }
     };
     
     const sendOrder = async () => {
         try {
-            const response = await fetch('https://localhost/order', {
+            const response = await fetch('http://localhost:8080/Order', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

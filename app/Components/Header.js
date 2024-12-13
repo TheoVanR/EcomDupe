@@ -1,38 +1,45 @@
+// components/Header.js
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import Cart from './Cart';
 import Validate from './Validate';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FavoritesProvider } from '../FavoriteContext';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
-
 
 const Header = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const router = useRouter();
+    const [isHomePage, setIsHomePage] = useState(true);
+
+    useEffect(() => {
+        setIsHomePage(router.pathname === '/');
+    }, [router.pathname]);
 
     const toggleModal = () => {
         setIsModalOpen(!isModalOpen);
     };
 
     return (
-        <header className="fixed top-8 left-0 w-full z-50  ">
+        <header className="fixed top-8 left-0 w-full z-50">
             <div className="flex items-center justify-between px-10 py-4">
-                <Link id="logotxt" href="/" className="text-white">Eton</Link>
+                <Link id="logotxt" href="/" className={isHomePage ? "text-white" : "text-blue-950"}>Eton</Link>
 
                 <nav className="flex w-2/5 items-center py-4 rounded-full text-slate-950 bg-gray-100 justify-between">
                     <a onClick={toggleModal} className="cursor-pointer flex-1 text-center">Shop</a>
                     <div className="flex-1 flex justify-center">
                         <Validate />
                     </div>
-                    <button className=" text-center">
-                        <FontAwesomeIcon icon={faHeart} />
+                    <button className="text-center">
+                       <FontAwesomeIcon icon={faHeart} />
                     </button>
                     <div className="flex-1 flex justify-center">
                         <Cart />
                     </div>
                 </nav>
-
             </div>
 
             {/* Modal */}
