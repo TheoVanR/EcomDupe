@@ -6,9 +6,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import Cart from './Cart';
 import Validate from './Validate';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { FavoritesProvider } from '../FavoriteContext';
-import { faHeart } from '@fortawesome/free-regular-svg-icons';
+
 
 const Header = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -33,9 +31,7 @@ const Header = () => {
                     <div className="flex-1 flex justify-center">
                         <Validate />
                     </div>
-                    <button className="text-center">
-                       <FontAwesomeIcon icon={faHeart} />
-                    </button>
+                  
                     <div className="flex-1 flex justify-center">
                         <Cart />
                     </div>
