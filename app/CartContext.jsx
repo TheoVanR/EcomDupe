@@ -9,7 +9,16 @@ export const CartProvider = ({ children }) => {
     const [cartItems, setCartItems] = useState([]);
 
     const addToCart = (product) => {
-        setCartItems((prevItems) => [...prevItems, product]);
+        setCartItems((prevItems) => {
+            const existingItem = prevItems.find(item => item.id === product.id);
+            if (existingItem) {
+                return prevItems.map(item =>
+                    item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+                );
+            } else {
+                return [...prevItems, { ...product, quantity: 1 }];
+            }
+        });
     };
 
     const removeItem = (index) => {
@@ -26,23 +35,21 @@ export const CartProvider = ({ children }) => {
 
     // Load cart data from cookies if available
     useEffect(() => {
-        if (cartItems.length > 0) {
-            Cookies.set('cart', JSON.stringify(cartItems), { expires: 1 });
-        }
-    }
-        , [cartItems]);
-
-    // Update cookie whenever cart state changes
-    useEffect(() => {
         const storedCart = Cookies.get('cart');
         if (storedCart) {
             setCartItems(JSON.parse(storedCart));
         }
     }, []);
 
+    // Update cookie whenever cart state changes
+    useEffect(() => {
+        if (cartItems.length > 0) {
+            Cookies.set('cart', JSON.stringify(cartItems), { expires: 1 });
+        }
+    }, [cartItems]);
 
     return (
-        <CartContext.Provider value={{ cartItems, addToCart, removeItem, totalAmount, clearCart }}>
+        <CartContext.Provider value={{ cartItems, addToCart, removeItem, totalAmount, clearCart, setCartItems }}>
             {children}
         </CartContext.Provider>
     );

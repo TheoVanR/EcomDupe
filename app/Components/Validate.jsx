@@ -49,7 +49,7 @@ const Validate = () => {
                                     <CustomerInfo />
                                 </div>
                                 <div>
-                                    <Link className="m-8" href="/Account" >Edit details</Link>
+                                    <Link onClick={toggleModal} className="m-8" href="/Account" >Edit details</Link>
                                     <button onClick={logOut}>Log Out</button>
                                 </div>
                                 <button

@@ -20,14 +20,13 @@ const CheckoutPage = () => {
         },
         "Customer": {
             "Id": 2,
-            
             "Email": "jane.doe@example.com",
             "adress": "456 Oak St",
             "postalCode": 67890,
             "City": "Shelbyville"
         }
     };
-    
+
     const sendOrder = async () => {
         try {
             const response = await fetch('http://localhost:8080/Order', {
@@ -37,7 +36,7 @@ const CheckoutPage = () => {
                 },
                 body: JSON.stringify(msg)
             });
-    
+
             if (response.ok) {
                 const data = await response.json();
                 console.log(data);
@@ -48,13 +47,11 @@ const CheckoutPage = () => {
             console.error('Error:', error);
         }
     };
-    
 
     const handleCheckout = () => {
         alert('Proceeding to checkout with items:', cartItems);
         console.log(msg);
         sendOrder();
-        
     };
 
     const increment = (index) => {
@@ -72,7 +69,7 @@ const CheckoutPage = () => {
             <ul>
                 {cartItems.map((item, index) => (
                     <li key={index}>
-                        Item: {item.title} - ${item.price} x {item.quantity}
+                        {item.title} - ${item.price} x {item.quantity}
                         <button onClick={() => increment(index)}>
                             +
                         </button>
