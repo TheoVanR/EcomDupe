@@ -3,8 +3,12 @@ import Breadcrumb from '../Components/Breadcrumb';
 import ProductCard from '../Components/ProductCard';
 import { useEffect, useState } from 'react';
 
+const fakeApI = 'https://fakestoreapi.com/products?limit=21';
+const BlueAPI= 'http://localhost:8080/Product';
+
+
 async function fetchProducts() {
-    const res = await fetch('https://fakestoreapi.com/products?limit=21');
+    const res = await fetch(fakeApI);
     const data = await res.json();
     return data;
 }

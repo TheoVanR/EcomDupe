@@ -4,7 +4,7 @@ export default function Home() {
       <div className="absolute inset-0">
         <img
           src="/lazy2.webp"
-          alt="lazy"
+          alt="LandingImage"
           className="w-full h-full object-cover"
         />
       </div>
