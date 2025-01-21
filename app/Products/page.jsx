@@ -1,11 +1,11 @@
 "use client"
 import Breadcrumb from '../Components/Breadcrumb';
 import ProductCard from '../Components/ProductCard';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { useProducts } from '../Providers/Product';
+import Logo from '../Components/Logo';
 
 const fakeApI = 'https://fakestoreapi.com/products?limit=21';
-const BlueAPI= 'http://localhost:8080/Product';
-
 
 async function fetchProducts() {
     const res = await fetch(fakeApI);
@@ -14,19 +14,22 @@ async function fetchProducts() {
 }
 
 export default function Page() {
-    const [products, setProducts] = useState([]);
+    const { products, setProducts } = useProducts();
 
     useEffect(() => {
         async function getProducts() {
             const data = await fetchProducts();
-            console.log('Fetched products:', data); // Debugging line
+            console.log("Fetched products:", data); // Debug log
             setProducts(data);
         }
         getProducts();
-    }, []);
+    }, [setProducts]);
+
 
     return (
         <div>
+            <Logo colorWhite={false} />
+
             <div className='m-6 h-[30rem] content-center top-20 p-8'>
                 <h1 className='text-8xl py-8'>All Products</h1>
                 <p className='text-4xl'>Here's a list of all available products:</p>
@@ -35,11 +38,12 @@ export default function Page() {
 
             <div className="grid grid-cols-3 m-4 gap-4">
                 {products.map((product) => (
-                    <div key={product.id} className="flex flex-col items-center justify-center h-[50vh] p-4">
+                    <div key={product.id} className="flex flex-col items-start justify-start"> {/* Change items-center to items-start */}
                         <ProductCard id={product.id} title={product.title} price={product.price} />
                     </div>
                 ))}
             </div>
+
         </div>
     );
 }

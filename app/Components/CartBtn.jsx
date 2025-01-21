@@ -1,17 +1,17 @@
 'use client';
 
-import { useCart } from '../CartContext';
+import { useCart } from '../Providers/Cart';
 
 const CartBtn = ({ id, title, price }) => {
-    const { addToCart } = useCart();
+    const { addToCart, printCart } = useCart();
 
-    
 
     const handleAddToCart = () => {
-        const product = { id, title, price };
+        const product = { id, title, price }; // Check if id, title, and price are correct
+        console.log("Adding product to cart:", product); // Debug log
         addToCart(product);
-        console.log(`${title} added to cart`); // Debugging line
     };
+
 
     return (
         <button

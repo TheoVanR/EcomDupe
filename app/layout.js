@@ -1,13 +1,13 @@
-// app/layout.js or pages/_app.js (depending on your Next.js version)
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 import "./globals.css";
-import { CartProvider } from "./CartContext";
-import { CustomerProvider } from "./CustomerContext";
-import { FavoritesProvider } from "./FavoriteContext";
+import { CartProvider } from "./Providers/Cart";
+import { CustomerProvider } from "./Providers/Customer";
+import { ProductProvider } from "./Providers/Product";
 import FontAwesomeConfig from "./fontawesome";
 
 export const metadata = {
+
   title: "Ecom.exe",
   description: "E-com copy",
 };
@@ -22,15 +22,15 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         <FontAwesomeConfig />
-        <CartProvider>
-          <CustomerProvider>
-            <FavoritesProvider>
+        <ProductProvider>
+          <CartProvider>
+            <CustomerProvider>
               <Header />
               {children}
               <Footer />
-            </FavoritesProvider>
-          </CustomerProvider>
-        </CartProvider>
+            </CustomerProvider>
+          </CartProvider>
+        </ProductProvider>
       </body>
     </html>
   );

@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { useCustomer } from '../CustomerContext';
+import { useCustomer } from '../Providers/Customer';
 
 const CustomerInfo = () => {
     const { customer } = useCustomer();

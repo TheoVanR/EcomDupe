@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from 'react';
-import { useCustomer } from '../CustomerContext';
+import { useCustomer } from '../Providers/Customer';
 
 const AccountPage = () => {
     const { customer, logIn } = useCustomer();  // Assuming logIn is used to update customer details in context

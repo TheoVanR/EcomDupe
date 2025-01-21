@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { useCart } from '../CartContext';
+import { useCart } from '../Providers/Cart';
 import CustomerInfo from '../Components/CustomerInfo';
 
 const CheckoutPage = () => {
