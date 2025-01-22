@@ -52,6 +52,7 @@ const Validate = () => {
                             >
                                 <div className='w-full'>
                                     <div className='h-[50%]'>
+                                        <h1 className='text-center text-2xl'>Welcome {customer.name} {customer.lastname}</h1>
                                         <CustomerInfo />
                                     </div>
                                     <div >
