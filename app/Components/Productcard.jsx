@@ -13,11 +13,11 @@ const ProductCard = ({ id, title, price }) => {
     };
 
     return (
-        <div className="p-4 border shadow-md w-full">
+        <div className="p-4 border h-full shadow-md w-full">
             <div className="flex justify-center">
                 <img
                     className="w-[20vw] h-[30vh] object-cover"
-                    src="/shirt1.webp"
+                    src="/shirt2.webp"
                     alt={product.title}
                 />
             </div>
@@ -25,7 +25,7 @@ const ProductCard = ({ id, title, price }) => {
             <div className="p-2 text-left">
                 <Link
 
-                    href={`/Products/${product.id},${product.title}`}
+                    href={`/Products/${product.id}`}
                     className="font-medium"
                 >
                     {product.title}

@@ -1,7 +1,5 @@
-
 import CartBtn from "@/app/Components/CartBtn";
-
-
+import Logo from "@/app/Components/Logo";
 
 
 export default async function ProductPage({ params }) {
@@ -19,10 +17,14 @@ export default async function ProductPage({ params }) {
 
     return (
         <>
-            <div className='h-[10rem]'></div>
-            <div className="grid grid-cols-2 m-4 gap-4">
+
+            <div className="grid grid-cols-2  gap-4">
+                <Logo />
                 <img className="object-cover" src={"/shirt1.webp"} alt={title} />
                 <div className='flex flex-col items-left justify-center h-[50vh] p-4'>
+                    <div className="my-[14rem]">
+
+                    </div>
                     <div className="p-2">
                         <p className="font-medium">{title}</p>
                     </div>

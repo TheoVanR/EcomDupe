@@ -1,13 +1,16 @@
+"use client";
+
 import Link from "next/link";
 
-const Logo = ({ colorWhite }) => {
+const Logo = ({ colorWhite, isHomePage }) => {
     return (
-        <div className="mx-8 absolute top-8 ">
+        <div className="mx-8 z-50 absolute top-8">
             <Link
-                id="logotxt"
-
+                id="logo-text"
                 href="/"
-                className={colorWhite ? "text-white" : "text-slate-950"}
+                className={
+                    colorWhite || isHomePage ? "text-white" : "text-slate-950"
+                }
             >
                 ETON
             </Link>

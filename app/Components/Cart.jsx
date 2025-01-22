@@ -20,7 +20,7 @@ const Cart = () => {
     return (
         <>
             {/* Button to open the cart modal */}
-            <button onClick={toggleModal}>
+            <button className="cursor-pointer px-8 text-center" onClick={toggleModal}>
                 <FontAwesomeIcon icon={faBagShopping} />
             </button>
 
@@ -65,24 +65,20 @@ const Cart = () => {
                         ) : (
                             // If the cart has items, display them
                             <div className="flex-grow">
-                                <div className='p-4'>
+                                <div className='p-4 max-h-[60vh] overflow-y-auto'> {/* Change max-h-30 to max-h-[30vh] or max-h-40 */}
                                     <ul>
                                         {cartItems.map((item, index) => (
                                             <li className="p-4 flex" key={index}>
-                                                <Image src="/shirt2.webp" alt="shirt2" width={70} height={60} />
-                                                <div className='mx-2 overflow-y: scroll; height:400px;'>
+                                                <Image src="/shirt2.webp" alt="shirt2" width={70} height={50} />
+                                                <div className='mx-2'>
                                                     <p>{item.title}</p>
                                                     <p>${item.price ? item.price : 'N/A'}</p>
                                                     <div className='flex'>
                                                         <p>Quantity:</p>
-                                                        <button className='mx-2'
-                                                            onClick={() => subQuant(item.id)}>-</button>
+                                                        <button className='mx-2' onClick={() => subQuant(item.id)}>-</button>
                                                         <p>{item.quantity}</p>
-                                                        <button className='mx-2'
-                                                            onClick={() => addQuant(item.id)}>+</button>
+                                                        <button className='mx-2' onClick={() => addQuant(item.id)}>+</button>
                                                     </div>
-
-
                                                     <button onClick={() => removeItem(item.id)}>X</button>
                                                 </div>
                                             </li>
@@ -99,9 +95,11 @@ const Cart = () => {
                                     >
                                         X
                                     </button>
+
                                     <Link onClick={toggleModal} className="bg-blue-950 mr-4 rounded-full text-white p-2 w-full text-center" href="/Checkout">Checkout</Link>
                                 </div>
                             </div>
+
                         )}
                     </div>
                 </>

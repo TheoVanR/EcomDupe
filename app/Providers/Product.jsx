@@ -7,29 +7,48 @@ const ProductContext = createContext();
 
 export const ProductProvider = ({ children }) => {
     const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
 
-    // Load products data from cookies if available
+    const fakeApi = 'https://fakestoreapi.com/products?limit=21';
+
+    // Fetch products from the API
+    const fetchProducts = async () => {
+        setLoading(true);
+        setError(null);
+        try {
+            const res = await fetch(fakeApi);
+            if (!res.ok) {
+                throw new Error('Failed to fetch products');
+            }
+            const data = await res.json();
+            setProducts(data);
+            Cookies.set('products', JSON.stringify(data), { expires: 1 }); // Cache in cookies
+        } catch (err) {
+            setError(err.message);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    // Load products from cookies or fetch if not available
     useEffect(() => {
         const storedProducts = Cookies.get('products');
         if (storedProducts) {
             setProducts(JSON.parse(storedProducts));
+        } else {
+            fetchProducts(); // Fetch only if no cached data is available
         }
     }, []);
 
-    // Update cookie whenever products state changes
-    useEffect(() => {
-        if (products.length > 0) {
-            Cookies.set('products', JSON.stringify(products), { expires: 1 });
-        }
-    }, [products]);
-
     return (
-        <ProductContext.Provider value={{ products, setProducts }}>
+        <ProductContext.Provider value={{ products, fetchProducts, loading, error }}>
             {children}
         </ProductContext.Provider>
     );
 };
 
+// Custom hook to use product context
 export const useProducts = () => {
     return useContext(ProductContext);
 };

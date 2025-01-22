@@ -36,7 +36,7 @@ const Validate = () => {
         <>
             {customer.isLoggedIn ? (
                 <>
-                    <button onClick={toggleModal}><FontAwesomeIcon icon={faUser} /></button>
+                    <button className="cursor-pointer px-8 text-center" onClick={toggleModal}><FontAwesomeIcon icon={faUser} /></button>
 
                     {isModalOpen && (
                         <>
