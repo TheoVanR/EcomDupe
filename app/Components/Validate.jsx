@@ -54,9 +54,9 @@ const Validate = () => {
                                     <div className='h-[50%]'>
                                         <CustomerInfo />
                                     </div>
-                                    <div>
-                                        <Link onClick={toggleModal} className="m-8" href="/Account" >Edit details</Link>
-                                        <button onClick={logOut}>Log Out</button>
+                                    <div >
+                                        <Link className="bg-slate-100 px-4 py-3 mx-4 text-slate-950 rounded-full " onClick={toggleModal} href="/Account" >Edit details</Link>
+                                        <button className="bg-slate-950 px-4 py-2 text-white rounded-full " onClick={logOut}>Log Out</button>
                                     </div>
                                     <button
                                         onClick={toggleModal}

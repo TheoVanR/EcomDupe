@@ -43,3 +43,11 @@ p {
     text-wrap: balance;
   }
 }
+
+input {
+  background-color: #F1F5F9;
+  border: 1px solid #0b1130;
+  margin: 8px 0;
+  /* Add border-style (solid) */
+  border-radius: 5px;
+}

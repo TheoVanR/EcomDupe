@@ -2,14 +2,8 @@ import CartBtn from "./CartBtn";
 import Link from "next/link";
 
 const ProductCard = ({ id, title, price }) => {
-    const product = {
-        id: id,
-        title: title,
-        price: price
-    };
-
     const debug = () => {
-        console.log(product);
+        console.log({ id, title, price });
     };
 
     return (
@@ -18,26 +12,21 @@ const ProductCard = ({ id, title, price }) => {
                 <img
                     className="w-[20vw] h-[30vh] object-cover"
                     src="/shirt2.webp"
-                    alt={product.title}
+                    alt={title}
                 />
             </div>
 
             <div className="p-2 text-left">
-                <Link
-
-                    href={`/Products/${product.id}`}
-                    className="font-medium"
-                >
-                    {product.title}
+                <Link href={`/Products/${id}`} className="font-medium">
+                    {title}
                 </Link>
             </div>
             <div className="p-2 text-left">
-                <p className="text-base">${product.price}</p>
+                <p className="text-base">${price}</p>
             </div>
 
             <div className="p-2 text-left">
-                <CartBtn id={product.id} title={product.title} price={product.price} />
-
+                <CartBtn id={id} title={title} price={price} />
             </div>
         </div>
     );
