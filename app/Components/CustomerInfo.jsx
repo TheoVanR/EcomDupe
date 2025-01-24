@@ -11,8 +11,7 @@ const CustomerInfo = () => {
             {customer.isLoggedIn ? (
                 <div className=' p-4'>
 
-
-                    <div className=' bg-slate-100 rounded-sm p-4'>
+                    <div className=' bg-gray-100 rounded-sm p-4'>
                         <p>{customer.name} {customer.lastname}</p>
                         <p>Email: {customer.email}</p>
                         <p>Address: {customer.address}</p>

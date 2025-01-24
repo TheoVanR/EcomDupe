@@ -2,43 +2,44 @@
 
 import CartBtn from "@/app/Components/CartBtn";
 import Logo from "@/app/Components/Logo";
-import { useEffect, useState } from "react";
 import { useProducts } from "@/app/Providers/Product";
 
 export default function ProductPage({ params }) {
-    const { id } = params; // Get the product ID from the URL
     const { products } = useProducts(); // Fetch products from context
-    const [product, setProduct] = useState(null);
+    const id = Number(params.Id); // Use the correct case for `Id`
 
-    useEffect(() => {
-        const fetchedProduct = products.find((p) => p.id === parseInt(id)); // Find product by ID
-        setProduct(fetchedProduct || null); // Set product or null if not found
-    }, [id, products]);
+    // Find the product based on the ID
+    const product = products.find((product) => product.id === id);
 
+    // Handle case where the product is not found
     if (!product) {
         return (
             <div className="flex justify-center items-center h-screen">
-                <p className="text-2xl">Product not found.</p>
+                <p className="text-2xl font-bold">Product not found.</p>
             </div>
         );
     }
 
-    const { title, price, image } = product;
+    const { title, price } = product;
 
     return (
         <div>
             <div className="grid grid-cols-2 gap-4">
                 <Logo />
-                <img className="object-cover" src={image || "/shirt1.webp"} alt={title} />
+                <img
+                    className="object-cover"
+                    src={"/shirt1.webp"} // Replace with product.image if available
+                    alt={title || "Product Image"}
+                />
                 <div className="flex flex-col items-left justify-center h-[50vh] p-4">
                     <div className="my-[14rem]"></div>
                     <div className="p-2">
-                        <p className="font-medium">{title}</p>
+                        <h2 className="font-medium"> {title}</h2>
                     </div>
                     <div className="p-2">
-                        <p className="text-base">${price}</p>
+                        <p className="text-base">Price: ${price}</p>
                     </div>
-                    <CartBtn id={id} />
+                    <CartBtn id={id} title={title} price={price} />
                 </div>
             </div>
             <div className="h-[10rem]"></div>

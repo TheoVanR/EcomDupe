@@ -44,7 +44,7 @@ p {
   }
 }
 
-input {
+#userEdit {
   background-color: #F1F5F9;
   border: 1px solid #0b1130;
   margin: 8px 0;

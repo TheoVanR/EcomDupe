@@ -104,7 +104,7 @@ const AccountPage = () => {
                             type="password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
-                            placeholder={customer.password || "Enter your password"}
+                            placeholder={"Enter your password"}
                             className="p-2 border rounded"
                         />
                     </div>

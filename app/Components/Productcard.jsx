@@ -6,6 +6,7 @@ const ProductCard = ({ id, title, price }) => {
         console.log({ id, title, price });
     };
 
+
     return (
         <div className="p-4 border h-full shadow-md w-full">
             <div className="flex justify-center">
@@ -17,7 +18,7 @@ const ProductCard = ({ id, title, price }) => {
             </div>
 
             <div className="p-2 text-left">
-                <Link href={`/Products/${id}`} className="font-medium">
+                <Link href={`/Products/${id, title}`} className="font-medium">
                     {title}
                 </Link>
             </div>
